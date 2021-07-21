@@ -41,3 +41,24 @@ int main(){
     cout<<getDiff(a,2)+getDiff(b,2);
     return 0;
 }
+
+//3. Queue at the School
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int strSize,r;
+    cin>>strSize>>r;
+    string s;
+    cin>>s;
+    for(int i=0;i<r;i++){
+        for(int j=0;j<strSize-1;j++){
+            if(s[j]=='B'&&s[j+1]=='G'){
+                swap(s[j],s[j+1]);
+                j++;
+            }
+        }
+    }
+    cout<<s;
+    return 0;
+}
