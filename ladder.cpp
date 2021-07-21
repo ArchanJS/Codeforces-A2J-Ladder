@@ -17,7 +17,7 @@ int main(){
     return 0;
 }
 
-//2. Beautiful matrix
+//2. Beautiful Matrix
 
 #include<bits/stdc++.h>
 using namespace std;
