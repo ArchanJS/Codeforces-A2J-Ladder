@@ -83,3 +83,85 @@ int main(){
     cout<<ans;
     return 0;
 }
+
+//5. Beautiful Year
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int year;
+    cin>>year;
+    while(true){
+        year++;
+        string s=to_string(year);
+        set<char> ch;
+        for(int i=0;i<s.size();i++){
+            ch.insert(s[i]);
+        }
+        if(ch.size()==s.size()) break;
+    }
+    cout<<year;
+    return 0;
+}
+
+//7. Word
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    string s;
+    cin>>s;
+    int cntUp=0,cntLow=0;
+    for(int i=0;i<s.size();i++){
+        if(isupper(s[i])) cntUp++;
+        else cntLow++;
+    }
+    if(cntUp>cntLow) transform(s.begin(),s.end(),s.begin(),::toupper);
+    else transform(s.begin(),s.end(),s.begin(),::tolower);
+    cout<<s;
+    return 0;
+}
+
+//8. Word Capitalization
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    string s;
+    cin>>s;
+    char ch=toupper(s[0]);
+    string newStr=ch+s.substr(1);
+    cout<<newStr;
+}
+
+//9. Nearly Lucky Number
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    string s;
+    cin>>s;
+    int cntLucky=0;
+    for(int i=0;i<s.size();i++){
+        if(s[i]=='4' || s[i]=='7') cntLucky++;
+    }
+    if(cntLucky==7 || cntLucky==4) cout<<"YES";
+    else cout<<"NO";
+    return 0;
+}
+
+//10. Stones on the Table
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int sz;
+    string s;
+    cin>>sz>>s;
+    int noOfStones=0;
+    for(int i=0;i<sz-1;i++){
+        if(s[i]==s[i+1]) noOfStones++;
+    }
+    cout<<noOfStones;
+    return 0;
+}
