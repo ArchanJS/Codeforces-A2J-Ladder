@@ -472,3 +472,75 @@ int main(){
 	return 0;
 }
 
+//25. Soft Drinking
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	int n,k,l,c,d,p,nl,np;
+	cin>>n>>k>>l>>c>>d>>p>>nl>>np;
+	int a[3]={(k*l)/nl,c*d,p/np};
+	cout<<*min_element(a,a+3)/n;
+	return 0;
+}
+
+//26. HQ9+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	string s;
+	cin>>s;
+	if(s.find('H')<s.size() || s.find('Q')<s.size() || s.find('9')<s.size()) cout<<"YES";
+	else cout<<"NO";
+	return 0;
+}
+
+//27. Petya and Strings
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	string s1,s2;
+	cin>>s1>>s2;
+	transform(s1.begin(),s1.end(),s1.begin(),::tolower);
+	transform(s2.begin(),s2.end(),s2.begin(),::tolower);
+	if(s1==s2)cout<<0;
+	else if(s1<s2)cout<<-1;
+	else cout<<1;
+	return 0;
+}
+
+//28. Team
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	int t,cnt=0;
+	cin>>t;
+	while(t--){
+		int a,b,c;
+		cin>>a>>b>>c;
+		if((a+b+c)>=2)cnt++;
+	}
+	cout<<cnt;
+	return 0;
+}
+
+//29. Bit++
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	int t,cnt=0;
+	cin>>t;
+	while(t--){
+		string s;
+		cin>>s;
+		if(s[1]=='+') cnt++;
+		else cnt--;
+	}
+	cout<<cnt;
+	return 0;
+}
+
