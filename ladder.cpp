@@ -544,3 +544,253 @@ int main(){
 	return 0;
 }
 
+//30. Effective Approach
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	long long int n;
+	cin>>n;
+	map<long long int, long long int> m1,m2;
+	for(long long int i=1;i<=n;i++){
+		long long int temp;
+		cin>>temp;
+		m1[temp]=i;
+		m2[temp]=n-i+1;
+	}
+	long long int q,cl=0,cr=0;
+	cin>>q;
+	for(long long int i=0;i<q;i++){
+		long long int temp;
+		cin>>temp;
+		cl+=m1[temp];
+		cr+=m2[temp];
+	}
+	cout<<cl<<" "<<cr;
+	return 0;
+}
+
+//31. Dima and Friends
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	int f,s=0,countFingers=0;
+	cin>>f;
+	for(int i=0;i<f;i++){
+		int num;
+		cin>>num;
+		s+=num;
+	}
+	for(int i=1;i<=5;i++){
+		if((s+i)%(f+1)!=1)countFingers++;
+	}
+	cout<<countFingers;
+	return 0;
+}
+
+//32. Jzzhu and Children
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	int n,m,pos;
+	cin>>n>>m;
+	int a[n];
+	for(int i=0;i<n;i++){
+		cin>>a[i];
+	}
+	while(1){
+		bool f=true;
+		for(int i=0;i<n;i++){
+			if(a[i]>0){
+				a[i]-=m;
+				f=false;
+				pos=i+1;
+			}
+		}
+		if(f)break;
+	}
+	cout<<pos;
+	return 0;
+}
+
+//33. Supercentral Point
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	int n,countPoints=0;
+	cin>>n;
+	vector<pair<int,int>> v;
+	for(int i=0;i<n;i++){
+		int a,b;
+		cin>>a>>b;
+		v.push_back({a,b});
+	}
+	for(int i=0;i<n;i++){
+		bool isRightNeighbour=false,isLeftNeighbour=false,isLowerNeighbour=false,isUpperNeighbour=false;
+		int x=v[i].first,y=v[i].second;
+		for(int j=0;j<n;j++){
+			if(i!=j){
+				int xt=v[j].first,yt=v[j].second;
+				if(xt>x&&yt==y)isRightNeighbour=true;
+				if(xt<x&&yt==y)isLeftNeighbour=true;
+				if(xt==x&&yt<y)isLowerNeighbour=true;
+				if(xt==x&&yt>y)isUpperNeighbour=true;
+			}
+		}
+		if(isRightNeighbour&&isLeftNeighbour&&isLowerNeighbour&&isUpperNeighbour) countPoints++;
+	}
+	cout<<countPoints;
+	return 0;
+}
+
+//34. Petr and Book
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	int totalPages,a[7],day;
+	cin>>totalPages;
+	for(int i=0;i<7;i++){
+		cin>>a[i];
+	}
+	while(true){
+		for(int i=0;i<7;i++){
+			totalPages-=a[i];
+			if(totalPages<=0){
+				day=i+1;
+				break;
+			}
+		}
+		if(totalPages<=0) break;
+	}
+	cout<<day;
+	return 0;
+}
+
+//35. Parallelepiped
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int a,b,c;
+    cin>>a>>b>>c;
+    int x=sqrt((a*c)/b);
+    cout<<(x+(a/x)+(c/x))*4;
+    return 0;
+}
+
+//36. Reconnaissance 2
+#include<bits/stdc++.h>
+using namespace std;
+
+int getAbsDiff(int a,int b){
+	return a>b?a-b:b-a;
+}
+
+int main(){
+    int n;
+	cin>>n;
+	int a[n];
+	for(int i=0;i<n;i++){
+		cin>>a[i];
+	}
+	int diff=getAbsDiff(a[0],a[1]),ind1=0,ind2=1;
+	for(int i=1;i<n;i++){
+		int tempDiff,tempInd1=i,tempInd2=i+1;
+		if(i==n-1){
+			tempDiff=getAbsDiff(a[0],a[n-1]);
+			tempInd1=n-1;
+			tempInd2=0;
+		}
+		else{
+			tempDiff=getAbsDiff(a[i],a[i+1]);
+		}
+		if(tempDiff<diff){
+			diff=tempDiff;
+			ind1=tempInd1;
+			ind2=tempInd2;
+		}
+	}
+	cout<<ind1+1<<" "<<ind2+1;
+    return 0;
+}
+
+//37. Even Odds
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    long long n,k;
+	cin>>n>>k;
+    if (k<=(n + 1)/2)
+    {
+        cout<<k*2-1<<endl;
+    }
+    else
+    {
+        cout<<(k-(n + 1)/2)*2<<endl;
+    }
+    return 0;
+}
+
+//38. Little Elephant and Rozdil
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;
+    vector<int> v;
+    for(int i=0;i<n;i++){
+        int temp;
+        cin>>temp;
+        v.push_back(temp);
+    }
+    int minDistance=*min_element(v.begin(),v.end());
+    int posOfMinDistance=distance(v.begin(),find(v.begin(),v.end(),minDistance));
+    int freqOfMinDistance=count(v.begin(),v.end(),minDistance);
+    if(freqOfMinDistance==1) cout<<posOfMinDistance+1;
+    else cout<<"Still Rozdil";
+    return 0;
+}
+
+//39. Hexadecimal's theorem
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;
+    cout<<0<<" "<<0<<" "<<n;
+    return 0;
+}
+
+//40. Jeff and Digits
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;
+    map<int,int> m;
+    for(int i=0;i<n;i++){
+        int temp;
+        cin>>temp;
+        m[temp]++;
+    }
+    int cnt5=m[5]-(m[5]%9);
+    if(m[5]>=9&&m[0]>0){
+        for(int i=0;i<cnt5;i++){
+            cout<<5;
+        }
+        for(int i=0;i<m[0];i++){
+            cout<<0;
+        }
+    }
+    else if(m[0]==0) cout<<-1;
+    else cout<<0;
+    return 0;
+}
