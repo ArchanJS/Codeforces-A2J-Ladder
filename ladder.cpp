@@ -794,3 +794,175 @@ int main(){
     else cout<<0;
     return 0;
 }
+
+//41. Xenia and Ringroad
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int houses, things;
+    cin>>houses>>things;
+    int houseNos[things];
+    for(int i=0;i<things;i++){
+        cin>>houseNos[i];
+    }
+    long long int totalTime=0;
+    int currPos=1;
+    for(int i=0;i<things;i++){
+        if(houseNos[i]>currPos)totalTime+=(houseNos[i]-currPos);
+        else if(houseNos[i]<currPos)totalTime+=(houses-currPos+houseNos[i]);
+        currPos=houseNos[i];
+    }
+    cout<<totalTime;
+    return 0;
+}
+
+//42. Magic Numbers
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    string s;
+    cin>>s;
+    bool f=false;
+    for(int i=0;i<s.size();i++){
+        if(i<s.size()-1){
+            if(i<s.size()-2){
+                if(s.substr(i,3)=="144") {
+                    i+=2;
+                    continue;
+                }
+            }
+            if(s.substr(i,2)=="14") {
+                    i+=1;
+                    continue;
+                }
+        }
+        if(s[i]=='1') continue;
+        f=true;
+        break;
+    }
+    if(f) cout<<"NO";
+    else cout<<"YES";
+    return 0;
+}
+
+//43. Translation
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    string s1,s2;
+    cin>>s1>>s2;
+    reverse(s2.begin(),s2.end());
+    if(s1!=s2) cout<<"NO";
+    else cout<<"YES";
+    return 0;
+}
+
+//44. Football
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    set<string> st;
+    int n;
+    cin>>n;
+    map<string,int> m;
+    for(int i=0;i<n;i++){
+        string s;
+        cin>>s;
+        if(m[s]==0)st.insert(s);
+        m[s]++;
+    }
+    string winner;
+    int maxScore=0;
+    for(string str:st){
+        if(maxScore<m[str]){
+            winner=str;
+            maxScore=m[str];
+        }
+    }
+    cout<<winner;
+    return 0;
+}
+
+//45. Bicycle Chain
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int a;
+    cin>>a;
+    int arr1[a];
+    for(int i=0;i<a;i++){
+        cin>>arr1[i];
+    }
+    int b;
+    cin>>b;
+    int arr2[b];
+    for(int i=0;i<b;i++){
+        cin>>arr2[i];
+    }
+    vector<int> v;
+    for(int i=0;i<a;i++){
+        for(int j=0;j<b;j++){
+            if(arr2[j]%arr1[i]==0){
+                v.push_back(arr2[j]/arr1[i]);
+            }
+        }
+    }
+    int maxRatio=*max_element(v.begin(),v.end());
+    int noOfMaxRatios=count(v.begin(),v.end(),maxRatio);
+    cout<<noOfMaxRatios;
+    return 0;
+}
+
+//46. Sale
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n,m,cntTVs=0;
+    cin>>n>>m;
+    int a[n];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    sort(a,a+n);
+    int totalMoney=0;
+    if(a[0]<0){
+        for(int i=0;i<n;i++){
+            if(a[i]>=0) break;
+            else {
+                if(cntTVs==m) break;
+                else {
+                    totalMoney+=a[i];
+                    cntTVs++;
+                }
+            }
+        }
+    }
+    if(totalMoney)cout<<-totalMoney;
+    else cout<<totalMoney;
+    return 0;
+}
+
+//47. System of Equations
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n,m,cntPair=0;
+    cin>>n>>m;
+    for(int i=0;i<=n;i++){
+        for(int j=0;j<=m;j++){
+            if(((i*i)+j)==n&&(i+(j*j))==m){
+                cntPair++;
+            }
+        }
+    }
+    cout<<cntPair;
+    return 0;
+}
+
