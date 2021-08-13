@@ -966,3 +966,178 @@ int main(){
     return 0;
 }
 
+//48. Business trip
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int k;
+    cin>>k;
+    int a[12];
+    for(int i=0;i<12;i++){
+        cin>>a[i];
+    }
+    sort(a,a+12);
+    int s=0,cnt=0;
+    if(k==0) cout<<0;
+    else{
+        for(int i=11;i>=0;i--){
+            s+=a[i];
+            cnt++;
+            if(s>=k){
+                cout<<cnt;
+                break;
+            }
+            else if(i==0){
+                cout<<-1;
+            }
+        }
+
+    }
+    return 0;
+}
+
+//49. Dubstep
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    string s;
+    bool f1=false,f2=true;
+    cin>>s;
+    for(int i=0;i<s.size();i++){
+        if(i<s.size()-2){
+            if(s.substr(i,3)=="WUB"){
+                if(f1==true) f2=false;
+                i+=2;
+            }
+            else{
+                f1=true;
+                if(f2==false){
+                    f2=true;
+                    cout<<" ";
+                }
+                cout<<s[i];
+            }
+        }
+        else{
+            f1=true;
+            if(f2==false){
+                f2=true;
+                cout<<" ";
+            }
+            cout<<s[i];
+        }
+    }
+    return 0;
+}
+
+//50. k-String
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int k;
+    cin>>k;
+    string s;
+    cin>>s;
+    bool f=false;
+    map<char,int> m;
+    set<char> st;
+    for(int i=0;i<s.size();i++){
+        m[s[i]]++;
+        st.insert(s[i]);
+    }
+    for(char x:s){
+        if(m[x]%k!=0){
+            f=true;
+            break;
+        }
+    }
+    if(!f){
+        for(int i=0;i<k;i++){
+            for(char x:st){
+                for(int i=0;i<m[x]/k;i++){
+                    cout<<x;
+                }
+            }
+        }
+    }
+    else cout<<-1;
+    return 0;
+}
+
+//51. The number of positions
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n,a,b;
+    cin>>n>>a>>b;
+    int cntPos=0,bPos=n-b+1;
+    if(bPos>=a+2) cout<<b+1;
+    else cout<<n-a;
+    return 0;
+}
+
+//52. Football
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    string s;
+    cin>>s;
+    bool dangerous=false;
+    for(int i=0;i<=s.size()-7&&s.size()>=7;i++){
+        if(s.substr(i,7)=="1111111" || s.substr(i,7)=="0000000"){
+            dangerous=true;
+            break;
+        }
+    }
+    if(dangerous)cout<<"YES";
+    else cout<<"NO";
+    return 0;
+}
+
+//53. String Task
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    string s,vowels="aeiouy";
+    cin>>s;
+    transform(s.begin(),s.end(),s.begin(),::tolower);
+    for(int i=0;i<s.size();i++){
+        if(vowels.find(s[i])==string::npos){
+            cout<<'.'<<s[i];
+        }
+    }
+    return 0;
+}
+
+//54. Little Elephant and Function
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void changeEle(int *a, int n){
+    if(n==0) return;
+    swap(a[n],a[n-1]);
+    changeEle(a,n-1);
+}
+
+int main(){
+    int n;
+    cin>>n;
+    int a[n];
+    for(int i=1;i<=n;i++){
+        a[i-1]=i;
+    }
+    changeEle(a,n-1);
+    for(int i=0;i<n;i++){
+        cout<<a[i];
+        if(i!=n-1)cout<<" ";
+    }
+    return 0;
+}
+
