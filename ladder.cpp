@@ -1141,3 +1141,153 @@ int main(){
     return 0;
 }
 
+//55. Present from Lena
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;
+    for(int i=0;i<=n;i++){
+        int f;
+        for(int j=0;j<=n-i-1;j++){
+            cout<<"  ";
+        }
+        for(int j=0;j<=i;j++){
+            cout<<j;
+            if(j!=i) cout<<" ";
+            f=j;
+        }
+        for(int j=f-1;j>=0;j--){
+            cout<<" "<<j;
+        }
+        cout<<endl;
+    }
+    for(int i=n-1;i>=0;i--){
+        int f;
+        for(int j=0;j<=n-i-1;j++){
+            cout<<"  ";
+        }
+        for(int j=0;j<=i;j++){
+            cout<<j;
+            if(j!=i) cout<<" ";
+            f=j;
+        }
+        for(int j=f-1;j>=0;j--){
+            cout<<" "<<j;
+        }
+        cout<<endl;
+    }
+    return 0;
+}
+
+//57. Puzzles
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n,m,leastDiff=999;
+    cin>>n>>m;
+    int a[m];
+    for(int i=0;i<m;i++){
+        cin>>a[i];
+    }
+    sort(a,a+m);
+    for(int i=0;i<=m-n;i++){
+        int currDiff=a[n+i-1]-a[i];
+        leastDiff=min(currDiff,leastDiff);
+    }
+    cout<<leastDiff;
+    return 0;
+}
+
+//58. Chat room
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    string s;
+    cin>>s;
+    int h=-1,e=-1,l1=-1,l2=-1,o=-1;
+    for(int i=0;i<s.size();i++){
+        if(s[i]=='h'){
+            h=i;
+            break;
+        }
+    }
+    for(int i=h+1;i<s.size();i++){
+        if(s[i]=='e'){
+            e=i;
+            break;
+        }
+    }
+    for(int i=e+1;i<s.size();i++){
+        if(s[i]=='l'){
+            l1=i;
+            break;
+        }
+    }
+    for(int i=l1+1;i<s.size();i++){
+        if(s[i]=='l') {
+            l2=i;
+            break;
+        }
+    }
+    for(int i=l2+1;i<s.size();i++){
+        if(s[i]=='o'){
+            o=i;
+            break;
+        }
+    }
+    if(h>=0&&e>0&&l1>1&&l2>2&&o>3) cout<<"YES";
+    else cout<<"NO";
+    return 0;
+}
+
+//59. Airport
+
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n, p;
+    cin >> p >> n;
+    int a[n], b[n];
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+        b[i] = a[i];
+    }
+    int mnc = 0, mxc = 0,t1=p,t2=p;
+    while (1)
+    {
+        sort(a,a+n);
+        for(int i=0;i<n;i++){
+            if(a[i]!=0){
+                mnc+=a[i];
+                t1--;
+                a[i]-=1;
+                break;
+            }
+        }
+        if(t1==0) break;
+    }
+    while(1){
+        sort(b,b+n);
+        for(int i=n-1;i>=0;i--){
+            if(b[i]!=0){
+                mxc+=b[i];
+                t2--;
+                b[i]-=1;
+                break;
+            }
+        }
+        if(t2==0) break;
+    }
+    cout<<mxc<<" "<<mnc;
+    return 0;
+}
+
