@@ -1291,3 +1291,51 @@ int main()
     return 0;
 }
 
+//60. DZY Loves Chessboard
+
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int m,n;
+    cin>>m>>n;
+    char a[m][n];
+    for(int i=0;i<m;i++){
+        for(int j=0;j<n;j++){
+            cin>>a[i][j];
+        }
+    }
+    for(int i=0;i<m;i++){
+        for(int j=0;j<n;j++){
+            if(a[i][j]=='.'){
+                if((i+j)%2==0) a[i][j]='B';
+                else a[i][j]='W';
+            }
+        }
+    }
+    for(int i=0;i<m;i++){
+        for(int j=0;j<n;j++){
+            cout<<a[i][j];
+        }
+        if(i!=m-1) cout<<endl;
+    }
+    return 0;
+}
+
+//61. Pashmak and Flowers
+
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    long long int n;
+    cin>>n;
+    long long int a[n];
+    for(long long int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    long long int minEle=*min_element(a,a+n), maxEle=*max_element(a,a+n), cntMinEle=count(a,a+n,minEle), cntMaxEle=count(a,a+n,maxEle);
+    if(minEle==maxEle) cout<<maxEle-minEle<<" "<<(n-1)*n/2;
+    else cout<<maxEle-minEle<<" "<<cntMaxEle*cntMinEle;
+    return 0;
+}
